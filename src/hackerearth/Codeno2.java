@@ -29,7 +29,7 @@ private static Scanner s;
 				a.add(temp);
 			}
 			for (int i = 0; i < k; i++) {
-				int temp = Integer.parseInt(br.readLine());
+				int temp = s.nextInt();
 				d.add(temp);
 			}
 			int cnt=0;
