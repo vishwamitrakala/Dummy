@@ -1,0 +1,51 @@
+<html >
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+</head>
+<body ng-app="myapp" ng-init="quantity=1; cost=30; student={firstname:'vicky',lastname:'kala',empid:1206336};marks=[60,50,70,80,90,100]">
+
+
+<div >
+<label>Name:</label>
+<input type="text" ng-model="yourName" placeholder="enter a name here">
+<hr/>
+<h1>Hello {{yourName}}!</h1>
+</div>
+<!-- <div   ng-controller="HelloController">
+<p>controller</p>
+<h1>Welcome to the world of {{hello.title}} buddy </h1>
+
+<p>initializer</p>
+<p>Hello: {{student.firstname + " " + student.lastname}} !</p>
+<p>Expense on books: {{quantity*cost}}</p>
+<p>Marks(Math) : {{marks[3]}}</p>
+</div> -->
+<div ng-controller="studentController">
+Enter first name:<input type="text" ng-model="Student.firstName">
+Enter last name :<input type="text" ng-model="Student.lastName">
+<br>
+You r entering:{{Student.fullName()|currency}}
+</div>
+<script>
+angular.module("myapp", [])
+.controller("HelloController",function($scope){
+$scope.hello={};
+$scope.hello.title="AngularJS";
+});
+</script>
+<script >
+angular.module("myapp", [])
+.controller("studentController",function($scope){
+		$scope.Student={
+			firstName:"",
+			lastName:"",
+			fullName:function(){
+				var studentObject;
+				studentObject=$scope.Student;
+				return studentObject.firstName + " " + studentObject.lastName;
+			}
+		};
+	});
+</script>
+</body>
+</html>
