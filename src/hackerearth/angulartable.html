@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular JS TABLES</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script src="/D:/angularjs/mainapp.js"></script>
+	<script src="/D:/angularjs/studyController.js"></script>
+</head>
+<body>
+<h1>Angularjs app</h1>
+
+<div ng-app="myapp" ng-controller="studyController">
+<p>Total Click:{{ clickCounter }}</p>
+<button ng-click="clickCounter=clickCounter+1">Click me!</button>
+	<table border="2">
+		<tr>
+		<td><input type = "checkbox" ng-model = "enableDisableButton">Disable Button</td>
+		<td><button ng-click="clickCounter=clickCounter+1" ng-disabled = "enableDisableButton">Click Me!</button></td>
+		</tr>
+		<tr>
+		<td><input type="checkbox" ng-model="showhide">Show Button</td>
+		<td><button ng-show="showhide" > Show!</button></td>
+		</tr>
+		<tr>
+		<td><input type="checkbox" ng-model="showhide1">Hide Button</td>
+		<td><button ng-hide="showhide1" > Hide!</button></td>
+		</tr>
+		<tr>
+			<td>Enter first name</td>
+			<td><input type="text" ng-model="student.firstName"></td>
+		</tr>
+		<tr>
+			<td>Enter Last name</td>
+			<td><input type="text" ng-model="student.lastName"></td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td>{{student.fullName()|uppercase}}</td>
+		</tr>
+		<tr>
+			<td>Subject:</td>
+			<td>
+				<table border="2">
+					<tr>
+					<th>Name</th>
+					<th>Marks</th>
+					</tr>
+					<tr ng-repeat="subject in student.subjects" >
+						<td>{{subject.name}}</td>
+						<td>{{subject.marks}}</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+
+</div>
+
+<!-- <script>
+angular.module('myapp', [])
+.controller("studyController", function($scope){
+$scope.student={
+	firstName:"Vicky",
+	lastName:"Kala",
+	fees:500,
+	subjects:[
+	{name:'Phy',marks:85},
+	{name:'Chem',marks:95},
+	{name:'Math',marks:90},
+	{name:'Comp',marks:82}
+	],
+	fullName:function(){
+		var studentObject=$scope.student;
+		return studentObject.firstName+ " " +studentObject.lastName;
+	}
+};
+});
+</script> -->
+</body>
+</html>
