@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>AngularJS Form</title>
+<script src ="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+</head>
+<body>
+	<div ng-app="myapp" ng-controller="studentController">
+	
+		<form name="studentForm" novalidate>
+			<table border="1">
+				<tr>
+					<td>Enter first name:</td>
+					<td><input name="firstname" type="text" ng-model="firstName" required> 
+					<span style="color: red" ng-show="studentForm.firstname.$dirty && studentForm.firstname.$invalid ">
+							<span ng-show="studentForm.firstname.$error.required">
+								First name is required. </span>
+					</span></td>
+				</tr>
+				<tr>
+					<td>Enter last name:</td>
+					<td><input name="lastname" type="text" ng-model="lastName"
+						required> <span style="color: red"
+						ng-show="studentForm.lastname.$dirty && studentForm.lastname.$invalid ">
+							<span ng-show="studentForm.lastname.$error.required">Last
+								name is required.</span>
+					</span></td>
+				</tr>
+				<tr>
+					<td>Enter Email Id:</td>
+					<td><input name="emailid" type="email" ng-model="emailId"
+						required> <span style="color: red"
+						ng-show="studentForm.emailid.$dirty && studentForm.emailid.$invalid ">
+							<span ng-show="studentForm.emailid.$error.required">Email
+								id is required.</span> <span ng-show="studentForm.emailid.$error.email">Email
+								id is invalid.</span>
+					</span></td>
+				</tr>
+				<tr>
+					<td><button ng-click="reset()">Reset</button></td>
+					<td><button
+							ng-disabled="studentForm.firstname.$dirty && studentForm.firstname.$invalid||
+								studentForm.lastname.$dirty && studentForm.lastname.$invalid||
+								studentForm.emailid.$dirty && studentForm.emailid.$invalid "
+							ng-click="submit()">Submit</button>
+							</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<script>
+var mainapp=angular.module("myapp",[]);
+mainapp.controller("studentController", function($scope){
+	$scope.reset=function(){
+	$scope.firstName="Vishwa";
+	$scope.lastName="Kala";
+	$scope.emailId="vmk@gmail.com";
+			}
+	$scope.reset();
+});
+	</script>
+</body>
+</html>
